@@ -1,4 +1,4 @@
-CREATE TABLE Rol (
+CREATE TABLE Rl (
     Rol_ID SERIAL PRIMARY KEY,
     Rol_Adi VARCHAR(255) NOT NULL
 );
@@ -11,6 +11,10 @@ CREATE TABLE Kullanici (
     Rol_ID INT,
     FOREIGN KEY (Rol_ID) REFERENCES Rol(Rol_ID)
 );
+CREATE TABLE Kategori (
+    Kategori_ID SERIAL PRIMARY KEY,
+    Kategori_Adi VARCHAR(255) NOT NULL
+);
 
 CREATE TABLE Icerik (
     Icerik_ID SERIAL PRIMARY KEY,
@@ -19,8 +23,8 @@ CREATE TABLE Icerik (
     Tarih TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Kullanici_ID INT,
     FOREIGN KEY (Kullanici_ID) REFERENCES Kullanici(Kullanici_ID),
-    Kategori_ID SERIAL PRIMARY KEY,
-    FOREIGN KEY (Kategori_ID) REFERENCES Kategori(Kategori_ID)
+    Kategori_ID INT,
+	FOREIGN KEY (Kategori_ID) REFERENCES Kategori(Kategori_ID)
 );
 
 CREATE TABLE Etiket (
@@ -28,10 +32,7 @@ CREATE TABLE Etiket (
     Etiket_Adi VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE Kategori (
-    Kategori_ID SERIAL PRIMARY KEY,
-    Kategori_Adi VARCHAR(255) NOT NULL
-);
+
 
 CREATE TABLE Yorum (
     Yorum_ID SERIAL PRIMARY KEY,
