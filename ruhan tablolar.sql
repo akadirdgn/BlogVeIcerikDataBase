@@ -18,7 +18,9 @@ CREATE TABLE Icerik (
     Metin TEXT NOT NULL,
     Tarih TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Kullanici_ID INT,
-    FOREIGN KEY (Kullanici_ID) REFERENCES Kullanici(Kullanici_ID)
+    FOREIGN KEY (Kullanici_ID) REFERENCES Kullanici(Kullanici_ID),
+    Kategori_ID SERIAL PRIMARY KEY,
+    FOREIGN KEY (Kategori_ID) REFERENCES Kategori(Kategori_ID)
 );
 
 CREATE TABLE Etiket (
@@ -46,12 +48,16 @@ CREATE TABLE Cevap (
     Cevap_Metin TEXT NOT NULL,
     Tarih TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Kullanici_ID INT,
-    FOREIGN KEY (Kullanici_ID) REFERENCES Kullanici(Kullanici_ID)
+    FOREIGN KEY (Kullanici_ID) REFERENCES Kullanici(Kullanici_ID),
+    Icerik_ID INT,
+    FOREIGN KEY (Icerik_ID) REFERENCES Icerik(Icerik_ID)
 );
 
 CREATE TABLE Icerik_Durumu (
     Durum_ID SERIAL PRIMARY KEY,
-    Durum_Adi VARCHAR(255) NOT NULL
+    Durum_Adi VARCHAR(255) NOT NULL,
+    Icerik_ID INT,
+    FOREIGN KEY (Icerik_ID) REFERENCES Icerik(Icerik_ID)
 );
 
 CREATE TABLE Takip (
@@ -84,7 +90,9 @@ CREATE TABLE Anket (
     Anket_ID SERIAL PRIMARY KEY,
     Anket_Sorusu TEXT NOT NULL,
     Kullanici_ID INT,
-    FOREIGN KEY (Kullanici_ID) REFERENCES Kullanici(Kullanici_ID)
+    FOREIGN KEY (Kullanici_ID) REFERENCES Kullanici(Kullanici_ID),
+    Icerik_ID INT,
+    FOREIGN KEY (Icerik_ID) REFERENCES Icerik(Icerik_ID)
 );
 
 CREATE TABLE Anket_Cevaplari (
@@ -101,7 +109,9 @@ CREATE TABLE Bildirim (
     Icerik_ID INT,
     Tarih TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     Mesaj TEXT NOT NULL,
-    FOREIGN KEY (Icerik_ID) REFERENCES Icerik(Icerik_ID)
+    FOREIGN KEY (Icerik_ID) REFERENCES Icerik(Icerik_ID),
+    Kullanici_ID INT,
+    FOREIGN KEY (Kullanici_ID) REFERENCES Kullanici(Kullanici_ID)
 );
 
 CREATE TABLE Kullanici_Istatistik (
