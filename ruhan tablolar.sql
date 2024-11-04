@@ -29,7 +29,9 @@ CREATE TABLE Icerik (
 
 CREATE TABLE Etiket (
     Etiket_ID SERIAL PRIMARY KEY,
-    Etiket_Adi VARCHAR(255) NOT NULL
+    Etiket_Adi VARCHAR(255) NOT NULL,
+	Icerik_ID INT,
+	FOREIGN KEY (Icerik_ID) REFERENCES Icerik(Icerik_ID)
 );
 
 
