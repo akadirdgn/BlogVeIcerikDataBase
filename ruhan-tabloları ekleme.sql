@@ -17,7 +17,7 @@ CREATE TABLE Kategori (
 );
 CREATE TABLE Etiket (
     Etiket_ID SERIAL PRIMARY KEY,
-    Etiket_Adi VARCHAR(255) NOT NULL,
+    Etiket_Adi VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE Icerik (
@@ -28,7 +28,7 @@ CREATE TABLE Icerik (
     Kullanici_ID INT,
     FOREIGN KEY (Kullanici_ID) REFERENCES Kullanici(Kullanici_ID),
     Kategori_ID INT,
-	FOREIGN KEY (Kategori_ID) REFERENCES Kategori(Kategori_ID)
+	FOREIGN KEY (Kategori_ID) REFERENCES Kategori(Kategori_ID),
 	Etiket_ID SERIAL,
 	FOREIGN KEY (Etiket_ID) REFERENCES Etiket(Etiket_ID)
 );
