@@ -1,0 +1,7 @@
+CREATE OR REPLACE PROCEDURE TumRolleriListele()
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    SELECT * FROM rol;
+END;
+$$;

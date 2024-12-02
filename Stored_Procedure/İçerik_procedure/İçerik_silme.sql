@@ -1,0 +1,7 @@
+CREATE OR REPLACE PROCEDURE IcerikSil(Icerik_ID INT)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    DELETE FROM Icerik WHERE Icerik_ID = Icerik_ID;
+END;
+$$;

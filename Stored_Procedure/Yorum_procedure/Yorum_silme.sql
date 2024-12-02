@@ -1,0 +1,7 @@
+CREATE OR REPLACE PROCEDURE YorumSil(Yorum_ID INT)
+LANGUAGE plpgsql
+AS $$
+BEGIN
+    DELETE FROM Yorum WHERE Yorum_ID = Yorum_ID;
+END;
+$$;
